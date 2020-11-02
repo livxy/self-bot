@@ -1,11 +1,3 @@
-/*
-
-    About: Discord selfbot for counting and ss farming.
-    Author: Jan
-    Date: 10th December 2018
-
- */
-
 const Discord = require('discord.js');
 const config = require("./config.json");
 const bot = new Discord.Client();
@@ -38,7 +30,7 @@ bot.on('message', async msg =>
         //get author of the last message
         let last_msg_author = msg.channel.lastMessage.author;
 
-        //check if author isn't us.
+        //check if author isn't the bot.
         if(last_msg_author.id !== bot.user.id)
         {
             //get last message.
@@ -46,7 +38,7 @@ bot.on('message', async msg =>
             console.log('Last message author: ' + last_msg_author.username + '#' + last_msg_author.discriminator);
             console.log('Last message: ' + last_msg.toString());
 
-            //big magic to see if someone skipped the last number
+            //check if someone skipped the last number
             if(Number(last_msg) === old_num + 1 || old_num === 0)
             {
                 //send message and store new number.
